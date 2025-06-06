@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>IMAGINUS 団体利用案内</title>
+    <style>
+      /* ──────────────────────────────────────────
+       ベースリセット & レイアウト
+    ────────────────────────────────────────── */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Noto Sans JP", "メイリオ", sans-serif;
+        color: #333;
+        background-color: #fff;
+        line-height: 1.6;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 16px;
+      }
+      h2.section-title {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        text-align: center;
+      }
+      .text-center {
+        text-align: center;
+      }
+      .mt-40 {
+        margin-top: 40px;
+      }
+      .mb-40 {
+        margin-bottom: 40px;
+      }
+
+      /* ──────────────────────────────────────────
+       ヘッダー
+    ────────────────────────────────────────── */
+      header {
+        position: sticky;
+        top: 0;
+        background-color: #fff;
+        border-bottom: 1px solid #ddd;
+        z-index: 1000;
+      }
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 0;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .logo {
+        font-size: 20px;
+        font-weight: bold;
+        color: #003366;
+      }
+      .nav {
+        display: flex;
+        gap: 24px;
+      }
+      .nav a {
+        font-size: 16px;
+        color: #003366;
+        padding: 8px;
+        position: relative;
+      }
+      .nav a.active::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: #003366;
+      }
+      .header-cta a {
+        font-size: 14px;
+        padding: 8px 12px;
+        border: 2px solid #003366;
+        border-radius: 4px;
+        color: #003366;
+        transition: background-color 0.2s, color 0.2s;
+      }
+      .header-cta a:hover {
+        background-color: #003366;
+        color: #fff;
+      }
+
+      /* ──────────────────────────────────────────
+       キービジュアル (KV)
+    ────────────────────────────────────────── */
+      .hero {
+        position: relative;
+        background: url("https://www.example.com/kv-image.jpg") center/cover
+          no-repeat;
+        height: 360px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+      }
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 800px;
+        padding: 0 16px;
+      }
+      .hero-title {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 16px;
+        color: #fff;
+      }
+      .hero-subtitle {
+        font-size: 18px;
+        margin-bottom: 24px;
+        color: #fff;
+      }
+      .hero-buttons {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .hero-buttons a {
+        font-size: 16px;
+        padding: 12px 24px;
+        border-radius: 4px;
+        background-color: #003366;
+        color: #fff;
+        transition: opacity 0.2s;
+      }
+      .hero-buttons a:hover {
+        opacity: 0.9;
+      }
+
+      /* ──────────────────────────────────────────
+       活用シーン紹介 (各シーン1セクション)
+    ────────────────────────────────────────── */
+      .scene-section {
+        width: 100%;
+        border-bottom: 1px solid #eee;
+        padding: 60px 0;
+      }
+      .scene-content {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+
+      /* “reverse”クラスを付けると要素の順序を反転する */
+      .scene-content.reverse {
+        flex-direction: row-reverse;
+      }
+      .scene-image {
+        flex: 1 1 400px;
+        max-width: 500px;
+      }
+      .scene-image img {
+        border-radius: 8px;
+      }
+      .scene-text {
+        flex: 1 1 400px;
+        max-width: 600px;
+      }
+      .scene-text h3 {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        color: #003366;
+      }
+      .scene-text ul {
+        list-style: disc;
+        margin-left: 20px;
+        margin-bottom: 8px;
+        color: #333;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      /* ──────────────────────────────────────────
+       科学体験ラボ（サイエンスショー）セクション
+    ────────────────────────────────────────── */
+      .science-lab-section {
+        width: 100%;
+        padding: 60px 0;
+        background-color: #f9f9f9;
+      }
+      .science-lab-container {
+        display: flex;
+        align-items: flex-start;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+      .science-lab-images {
+        flex: 1 1 400px;
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .science-lab-images img {
+        width: calc(50% - 8px);
+        border-radius: 8px;
+      }
+      .science-lab-text {
+        flex: 1 1 400px;
+        max-width: 600px;
+      }
+      .science-lab-text h2 {
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        color: #003366;
+      }
+      .science-lab-text p {
+        font-size: 14px;
+        color: #333;
+        margin-bottom: 12px;
+        line-height: 1.6;
+      }
+      .science-lab-text ul {
+        list-style: disc;
+        margin-left: 20px;
+        color: #333;
+        font-size: 14px;
+        line-height: 1.6;
+        margin-bottom: 8px;
+      }
+
+      /* ──────────────────────────────────────────
+       体験メニュー / 料金表（Aコース / Bコース / Cコース）
+    ────────────────────────────────────────── */
+      .course-section {
+        width: 100%;
+        padding: 60px 0;
+      }
+      .course-section h2 {
+        margin-bottom: 24px;
+      }
+      .course-type {
+        margin-bottom: 60px;
+      }
+      .course-type h3 {
+        font-size: 20px;
+        font-weight: 700;
+        background-color: #003366;
+        color: #fff;
+        padding: 12px 16px;
+        margin-bottom: 16px;
+        border-radius: 4px;
+      }
+      .price-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+        font-size: 14px;
+        margin-bottom: 16px;
+      }
+      .price-table th,
+      .price-table td {
+        border: 1px solid #ddd;
+        padding: 12px;
+      }
+      .price-table th {
+        background-color: #f5f5f5;
+        font-weight: 700;
+      }
+      .price-col-a {
+        background-color: #e8f5ff;
+      }
+      .price-col-b {
+        background-color: #e8faf0;
+      }
+      .price-col-c {
+        background-color: #fff4e5;
+      }
+      .course-notes {
+        font-size: 14px;
+        color: #333;
+        line-height: 1.6;
+        padding: 0 8px;
+      }
+
+      /* ──────────────────────────────────────────
+       ワークショップ一覧 (タブ + カルーセル)
+    ────────────────────────────────────────── */
+      .ws-section {
+        width: 100%;
+        padding: 60px 0;
+      }
+      .ws-tabs {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        margin-bottom: 24px;
+      }
+      .ws-tabs button {
+        padding: 8px 16px;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        font-size: 14px;
+        transition: background-color 0.2s;
+        cursor: pointer;
+      }
+      .ws-tabs button.active {
+        background-color: #003366;
+        color: #fff;
+      }
+      .ws-carousel {
+        position: relative;
+        overflow: hidden;
+      }
+      .ws-cards {
+        display: flex;
+        gap: 16px;
+        transition: transform 0.3s;
+        padding-bottom: 16px;
+      }
+      .ws-card {
+        width: 260px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: #fff;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .ws-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      .ws-card img {
+        height: 140px;
+        object-fit: cover;
+      }
+      .ws-body {
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .ws-info {
+        display: flex;
+        gap: 8px;
+        font-size: 12px;
+        color: #555;
+      }
+      .ws-info span {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .ws-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #003366;
+      }
+      .ws-subtitle {
+        font-size: 14px;
+        color: #555;
+      }
+      .ws-link {
+        margin-top: auto;
+        font-size: 14px;
+        color: #ff8c00;
+      }
+      .ws-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 36px;
+        height: 36px;
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+      .ws-arrow:hover {
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+      .ws-arrow.left {
+        left: 0;
+      }
+      .ws-arrow.right {
+        right: 0;
+      }
+
+      /* ──────────────────────────────────────────
+       お弁当のご予約 (写真付き)
+    ────────────────────────────────────────── */
+      .bento-section {
+        width: 100%;
+        padding: 60px 0;
+        background-color: #fafafa;
+      }
+      .bento-container {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        flex-wrap: wrap;
+      }
+      .bento-image {
+        flex: 1 1 300px;
+        max-width: 400px;
+      }
+      .bento-image img {
+        border-radius: 8px;
+      }
+      .bento-text {
+        flex: 1 1 300px;
+        max-width: 600px;
+        font-size: 14px;
+        color: #333;
+        line-height: 1.6;
+      }
+      .bento-text h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: #003366;
+      }
+      .bento-text p {
+        margin-bottom: 8px;
+      }
+      .bento-note {
+        font-size: 13px;
+        color: #555;
+        margin-top: 8px;
+        line-height: 1.4;
+      }
+
+      /* ──────────────────────────────────────────
+       お申し込みの流れ (ステップ形式)
+    ────────────────────────────────────────── */
+      .flow-section {
+        width: 100%;
+        padding: 60px 0;
+      }
+      .flow-steps {
+        display: flex;
+        gap: 24px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+      .step-card {
+        flex: 1;
+        min-width: 200px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 16px;
+        text-align: center;
+        background-color: #fff;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .step-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+      .step-number {
+        font-size: 20px;
+        font-weight: 700;
+        color: #003366;
+        margin-bottom: 8px;
+      }
+      .step-desc {
+        font-size: 14px;
+        color: #333;
+      }
+
+      /* ──────────────────────────────────────────
+       FAQ セクション
+    ────────────────────────────────────────── */
+      .faq-section {
+        width: 100%;
+        padding: 60px 0;
+      }
+      .faq-item {
+        border-bottom: 1px solid #ddd;
+        padding: 16px 0;
+      }
+      .faq-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        color: #003366;
+      }
+      .faq-question .icon {
+        font-size: 18px;
+        transition: transform 0.2s;
+      }
+      .faq-answer {
+        display: none;
+        margin-top: 12px;
+        font-size: 14px;
+        color: #555;
+        line-height: 1.6;
+      }
+
+      /* ──────────────────────────────────────────
+       お問い合わせCTA
+    ────────────────────────────────────────── */
+      .contact-cta {
+        width: 100%;
+        padding: 60px 0;
+      }
+      .contact-cta .apply-btn {
+        display: inline-block;
+        font-size: 16px;
+        padding: 12px 24px;
+        border-radius: 4px;
+        background-color: #003366;
+        color: #fff;
+        transition: opacity 0.2s;
+      }
+      .contact-cta .apply-btn:hover {
+        opacity: 0.9;
+      }
+
+      /* ──────────────────────────────────────────
+       フッター
+    ────────────────────────────────────────── */
+      footer {
+        background-color: #f5f5f5;
+        padding: 40px 0;
+        font-size: 14px;
+        color: #666;
+      }
+      .footer-inner {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 24px;
+        padding: 0 16px;
+      }
+      .footer-col {
+        min-width: 180px;
+      }
+      .footer-col h4 {
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: #003366;
+      }
+      .footer-col ul li {
+        margin-bottom: 8px;
+      }
+      .footer-col ul li a {
+        color: #666;
+        transition: color 0.2s;
+      }
+      .footer-col ul li a:hover {
+        color: #333;
+      }
+      .footer-bottom {
+        text-align: center;
+        margin-top: 24px;
+        font-size: 13px;
+        color: #999;
+      }
+
+      /* ──────────────────────────────────────────
+       レスポンシブ
+    ────────────────────────────────────────── */
+      @media screen and (max-width: 768px) {
+        .scene-content,
+        .science-lab-container,
+        .bento-container,
+        .flow-steps {
+          flex-direction: column;
+          align-items: center;
+        }
+        .scene-image,
+        .scene-text,
+        .science-lab-images,
+        .science-lab-text,
+        .bento-image,
+        .bento-text,
+        .step-card {
+          width: 100%;
+          max-width: 360px;
+        }
+        .ws-cards {
+          gap: 12px;
+        }
+        .ws-card {
+          width: 80%;
+        }
+        .ws-tabs {
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ヘッダー -->
+    <header>
+      <div class="header-inner container">
+        <div class="logo">IMAGINUS</div>
+        <nav class="nav">
+        </nav>
+        <div class="header-cta">
+          <a href="/contact/">お問い合わせ</a>
+          <a href="/downloads/group-guide.pdf">資料DL</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- キービジュアル -->
+    <section class="hero">
+      <div class="hero-content container">
+        <h1 class="hero-title">団体で楽しむ「科学×体験」学びと感動の空間へ</h1>
+        <p class="hero-subtitle">
+          学校団体・企業イベント・ロケ撮影など、多彩なシーンで活用できる科学体験施設。<br />
+          出張サービスや仮設プラネタリウムなど、貴団体に合わせた柔軟なプランをご提案します。
+        </p>
+        <div class="hero-buttons">
+          <a href="/downloads/group-guide.pdf">団体利用資料をDL</a>
+          <a href="/contact/">今すぐ相談</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 活用シーン：校外学習（画像左・テキスト右） -->
+    <section class="scene-section">
+      <div class="scene-content container">
+        <div class="scene-image">
+          <img
+            src="https://www.example.com/scene-school.jpg"
+            alt="校外学習のイメージ"
+          />
+        </div>
+        <div class="scene-text">
+          <h3>校外学習</h3>
+          <ul>
+            <li>理科室ではできない実験工作</li>
+            <li>最新機器体験</li>
+            <li>自由研究支援</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 活用シーン：企業ファミリーデー（画像右・テキスト左） -->
+    <section class="scene-section">
+      <div class="scene-content container reverse">
+        <div class="scene-image">
+          <img
+            src="https://www.example.com/scene-familyday.jpg"
+            alt="企業ファミリーデーのイメージ"
+          />
+        </div>
+        <div class="scene-text">
+          <h3>企業ファミリーデー</h3>
+          <ul>
+            <li>親子参加型で貸切利用可</li>
+            <li>企画運営もご相談可能</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 活用シーン：フィルムコミッション（画像左・テキスト右） -->
+    <section class="scene-section">
+      <div class="scene-content container">
+        <div class="scene-image">
+          <img
+            src="https://www.example.com/scene-film.jpg"
+            alt="フィルムコミッションのイメージ"
+          />
+        </div>
+        <div class="scene-text">
+          <h3>フィルムコミッション</h3>
+          <ul>
+            <li>校舎のレトロ感がロケ撮影に最適</li>
+            <li>CM/映画撮影OK</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 活用シーン：出張利用（アウトリーチ）（画像右・テキスト左） -->
+    <section class="scene-section">
+      <div class="scene-content container reverse">
+        <div class="scene-image">
+          <img
+            src="https://www.example.com/scene-outreach.jpg"
+            alt="出張利用（アウトリーチ）のイメージ"
+          />
+        </div>
+        <div class="scene-text">
+          <h3>出張利用（アウトリーチ）</h3>
+          <ul>
+            <li>出張サイエンスショー</li>
+            <li>仮設プラネタリウム</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 体験メニューと料金表 -->
+    <section class="course-section">
+      <div class="container">
+        <h2 class="section-title">体験メニューと料金</h2>
+
+        <!-- Aコース -->
+        <div class="course-type" id="course-a">
+          <h3>Aコース：科学体験ラボ（サイエンスショー）＋ワークショップ</h3>
+          <p class="course-notes">
+            Aコースでお申し込みの団体さまは、年齢や学年に合わせてワークショップを選ぶことができます。
+          </p>
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th>区分</th>
+                <th>料金合計</th>
+                <th>科学体験ラボ</th>
+                <th>ワークショップ</th>
+                <th>所要時間</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>大人</td>
+                <td class="price-col-a">3,500円</td>
+                <td class="price-col-a">1,500円</td>
+                <td class="price-col-a">2,000円</td>
+                <td>3時間</td>
+              </tr>
+              <tr>
+                <td>4歳～小学校低学年</td>
+                <td class="price-col-a">2,000円</td>
+                <td class="price-col-a">1,000円</td>
+                <td class="price-col-a">1,000円</td>
+                <td>2時間半</td>
+              </tr>
+              <tr>
+                <td>小学校中学年～高学年</td>
+                <td class="price-col-a">2,500円</td>
+                <td class="price-col-a">1,000円</td>
+                <td class="price-col-a">1,500円</td>
+                <td>2時間半</td>
+              </tr>
+              <tr>
+                <td>中学生</td>
+                <td class="price-col-a">3,200円</td>
+                <td class="price-col-a">1,200円</td>
+                <td class="price-col-a">2,000円</td>
+                <td>3時間</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="course-notes">
+            <p>＜Aコース特記事項＞</p>
+            <ul>
+              <li>
+                科学体験ラボはIMAGINUS内ステージで実施。大型実験を交えた60分ショー。
+              </li>
+              <li>
+                ワークショップは別会場にて、年齢別に用意されたメニューから選択可能。
+              </li>
+              <li>
+                申し込み後、確定した参加人数と年齢に基づき、具体的なプログラム内容をご提案します。
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bコース -->
+        <div class="course-type" id="course-b">
+          <h3>Bコース：ワークショップのみ</h3>
+          <p class="course-notes">
+            Bコースでお申し込みの団体さまは、年齢や学年に合わせてワークショップを選ぶことができます。
+          </p>
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th>区分</th>
+                <th>料金合計</th>
+                <th>ワークショップ料</th>
+                <th>所要時間</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>大人</td>
+                <td class="price-col-b">2,500円</td>
+                <td class="price-col-b">2,500円</td>
+                <td>3時間</td>
+              </tr>
+              <tr>
+                <td>4歳～小学校低学年</td>
+                <td class="price-col-b">1,000円</td>
+                <td class="price-col-b">1,000円</td>
+                <td>2時間半</td>
+              </tr>
+              <tr>
+                <td>小学校中学年～高学年</td>
+                <td class="price-col-b">1,500円</td>
+                <td class="price-col-b">1,500円</td>
+                <td>2時間半</td>
+              </tr>
+              <tr>
+                <td>中学生</td>
+                <td class="price-col-b">2,000円</td>
+                <td class="price-col-b">2,000円</td>
+                <td>3時間</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="course-notes">
+            <p>＜Bコース特記事項＞</p>
+            <ul>
+              <li>
+                ワークショップのみのプラン。60～120分で年齢・学年別に複数メニューから選択可能。
+              </li>
+              <li>各ワークショップには、体験キット・教材が含まれています。</li>
+              <li>少人数向けなので、企業研修やクラブ活動などにもおすすめ。</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Cコース -->
+        <div class="course-type" id="course-c">
+          <h3>Cコース：科学体験ラボ（サイエンスショー）のみ</h3>
+          <p class="course-notes">
+            Cコースは科学体験ラボ（サイエンスショー）のみを実施したい団体向けのコースです。
+          </p>
+          <table class="price-table">
+            <thead>
+              <tr>
+                <th>区分</th>
+                <th>料金合計</th>
+                <th>科学体験ラボ</th>
+                <th>所要時間</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>大人</td>
+                <td class="price-col-c">1,500円</td>
+                <td class="price-col-c">1,500円</td>
+                <td>1時間</td>
+              </tr>
+              <tr>
+                <td>4歳～小学校低学年</td>
+                <td class="price-col-c">1,000円</td>
+                <td class="price-col-c">1,000円</td>
+                <td>1時間</td>
+              </tr>
+              <tr>
+                <td>小学校中学年～高学年</td>
+                <td class="price-col-c">1,200円</td>
+                <td class="price-col-c">1,200円</td>
+                <td>1時間</td>
+              </tr>
+              <tr>
+                <td>中学生</td>
+                <td class="price-col-c">1,200円</td>
+                <td class="price-col-c">1,200円</td>
+                <td>1時間</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="course-notes">
+            <p>＜Cコース特記事項＞</p>
+            <ul>
+              <li>
+                サイエンスショーのみ60分。IMAGINUS内ステージでの本格実験ショー。
+              </li>
+              <li>
+                ショープログラムは年齢・目的に合わせてカスタマイズ可能です。
+              </li>
+              <li>
+                学校行事のオープニングや企業イベントのステージイベントとしても最適。
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <!-- 科学体験ラボ（サイエンスショー） -->
+        <section class="science-lab-section">
+            <div class="container">
+              <h2 class="section-title">科学体験ラボ（サイエンスショー）</h2>
+              <div class="science-lab-container">
+                <div class="science-lab-images">
+                  <!-- 左側イメージ -->
+                  <img
+                    src="https://www.example.com/castaway-poster.jpg"
+                    alt="Castaway 無人島からの脱出"
+                  />
+                  <!-- 右側イメージ -->
+                  <img
+                    src="https://www.example.com/moon-landing-poster.jpg"
+                    alt="Moon Landing ～月面着陸への挑戦～"
+                  />
+                </div>
+                <div class="science-lab-text">
+                  <p>
+                    科学で楽しむための仕掛けが詰まった3つの部屋を巡る約90分間の体験型プログラムです。独創的でおかしな展示が並ぶ「博士の研究室」、奇天烈なNutty
+                    Scientistsのサイエンスショー（約30分）が繰り広げられる「博士の実験室」、触って試して動かして、自分も研究者になれる「博士の開発室」が体験できます。
+                  </p>
+                  <h3>サイエンスショー演目</h3>
+                  <ul>
+                    <li>Moon Landing ～月面着陸への挑戦～</li>
+                    <li>Castaway ～無人島からの脱出～</li>
+                    <li>The Magic of Science ～実験室のマジシャン～</li>
+                  </ul>
+                  <p>※サイエンスショーの所要時間は約30分です。</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+    <!-- ワークショップ一覧 -->
+    <section class="ws-section">
+      <div class="container">
+        <h2 class="section-title">ワークショップ一覧</h2>
+        <div class="ws-tabs">
+          <button data-tab="group1" class="active">4歳～小低学年</button>
+          <button data-tab="group2">小中学年～高学年</button>
+          <button data-tab="group3">中学生向け</button>
+        </div>
+        <!-- グループ1 -->
+        <div class="ws-carousel" id="ws-group1">
+          <div class="ws-arrow left" data-direction="left">&lt;</div>
+          <div class="ws-cards">
+            <div class="ws-card">
+              <img src="https://www.example.com/ws-dino.jpg" alt="恐竜ボトル" />
+              <div class="ws-body">
+                <div class="ws-info">
+                  <span>⏱ 30分</span>
+                  <span>👦 4～7歳</span>
+                  <span>💰 ¥1,000</span>
+                </div>
+                <div class="ws-title">消える？浮く？！恐竜ボトル</div>
+                <div class="ws-subtitle">水を注ぐと恐竜が浮かび上がる実験</div>
+                <a href="/workshop/dino-bottle/" class="ws-link"
+                  >詳しく見る →</a
+                >
+              </div>
+            </div>
+            <div class="ws-card">
+              <img
+                src="https://www.example.com/ws-spin-top.jpg"
+                alt="くるくるコマづくり"
+              />
+              <div class="ws-body">
+                <div class="ws-info">
+                  <span>⏱ 30分</span>
+                  <span>👦 4～7歳</span>
+                  <span>💰 ¥1,000</span>
+                </div>
+                <div class="ws-title">くるくるコマづくり</div>
+                <div class="ws-subtitle">
+                  金属パーツを組み合わせて回るコマを制作
+                </div>
+                <a href="/workshop/spin-top/" class="ws-link">詳しく見る →</a>
+              </div>
+            </div>
+            <div class="ws-card">
+              <img
+                src="https://www.example.com/ws-slime.jpg"
+                alt="スライム研究所"
+              />
+              <div class="ws-body">
+                <div class="ws-info">
+                  <span>⏱ 30分</span>
+                  <span>👦 4～7歳</span>
+                  <span>💰 ¥1,000</span>
+                </div>
+                <div class="ws-title">スライム研究所</div>
+                <div class="ws-subtitle">
+                  いろいろな素材を混ぜてスライムを作成
+                </div>
+                <a href="/workshop/slime/" class="ws-link">詳しく見る →</a>
+              </div>
+            </div>
+            <div class="ws-card">
+                <img
+                  src="https://www.example.com/ws-slime.jpg"
+                  alt="スライム研究所"
+                />
+                <div class="ws-body">
+                  <div class="ws-info">
+                    <span>⏱ 30分</span>
+                    <span>👦 4～7歳</span>
+                    <span>💰 ¥1,000</span>
+                  </div>
+                  <div class="ws-title">スライム研究所</div>
+                  <div class="ws-subtitle">
+                    いろいろな素材を混ぜてスライムを作成
+                  </div>
+                  <a href="/workshop/slime/" class="ws-link">詳しく見る →</a>
+                </div>
+              </div>
+            <!-- 追加ワークショップカード -->
+          </div>
+          <div class="ws-arrow right" data-direction="right">&gt;</div>
+        </div>
+        <!-- グループ2 -->
+        <div class="ws-carousel" id="ws-group2" style="display: none">
+          <div class="ws-arrow left" data-direction="left">&lt;</div>
+          <div class="ws-cards">
+            <div class="ws-card">
+              <img
+                src="https://www.example.com/ws-stormglass.jpg"
+                alt="ストームグラス"
+              />
+              <div class="ws-body">
+                <div class="ws-info">
+                  <span>⏱ 45分</span>
+                  <span>👦 8～12歳</span>
+                  <span>💰 ¥1,200</span>
+                </div>
+                <div class="ws-title">ストームグラス～結晶で天気を占おう～</div>
+                <div class="ws-subtitle">
+                  天候によって結晶の形が変わる不思議体験
+                </div>
+                <a href="/workshop/stormglass/" class="ws-link">詳しく見る →</a>
+              </div>
+            </div>
+            <div class="ws-card">
+              <img
+                src="https://www.example.com/ws-fluorite.jpg"
+                alt="フローライトをみがく"
+              />
+              <div class="ws-body">
+                <div class="ws-info">
+                  <span>⏱ 45分</span>
+                  <span>👦 8～12歳</span>
+                  <span>💰 ¥1,200</span>
+                </div>
+                <div class="ws-title">フローライトの原石をみがく</div>
+                <div class="ws-subtitle">原石を研磨して鉱物を学ぶ</div>
+                <a href="/workshop/fluorite-polish/" class="ws-link"
+                  >詳しく見る →</a
+                >
+              </div>
+            </div>
+            <!-- 追加ワークショップカード -->
+          </div>
+          <div class="ws-arrow right" data-direction="right">&gt;</div>
+        </div>
+        <!-- グループ3 -->
+        <div class="ws-carousel" id="ws-group3" style="display: none">
+          <div class="ws-arrow left" data-direction="left">&lt;</div>
+          <div class="ws-cards">
+            <div class="ws-card">
+              <img
+                src="https://www.example.com/ws-vitc.jpg"
+                alt="ビタミンC実験"
+              />
+              <div class="ws-body">
+                <div class="ws-info">
+                  <span>⏱ 60分</span>
+                  <span>👦 13～15歳</span>
+                  <span>💰 ¥1,500</span>
+                </div>
+                <div class="ws-title">レモン100個分のビタミンC定量実験</div>
+                <div class="ws-subtitle">
+                  スポイトで溶液を調整しながら実験を実施
+                </div>
+                <a href="/workshop/vitc-experiment/" class="ws-link"
+                  >詳しく見る →</a
+                >
+              </div>
+            </div>
+            <div class="ws-card">
+              <img src="https://www.example.com/ws-fire.jpg" alt="発火実験" />
+              <div class="ws-body">
+                <div class="ws-info">
+                  <span>⏱ 60分</span>
+                  <span>👦 13～15歳</span>
+                  <span>💰 ¥1,500</span>
+                </div>
+                <div class="ws-title">発火を科学する！火おこしチャレンジ</div>
+                <div class="ws-subtitle">3つの方法で火おこし原理を体験</div>
+                <a href="/workshop/fire-science/" class="ws-link"
+                  >詳しく見る →</a
+                >
+              </div>
+            </div>
+            <!-- 追加ワークショップカード -->
+          </div>
+          <div class="ws-arrow right" data-direction="right">&gt;</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- お弁当のご予約 -->
+    <section class="bento-section">
+      <div class="container">
+        <div class="bento-container">
+          <div class="bento-image">
+            <img
+              src="https://www.example.com/bento-sample.jpg"
+              alt="お弁当イメージ"
+            />
+          </div>
+          <div class="bento-text">
+            <h3>お弁当のご予約</h3>
+            <p>
+              団体利用の際、お弁当のご予約が可能です。ご希望の方はご利用案内をご確認の上、打合せ時にお申し出ください。
+            </p>
+            <div class="bento-note">
+              <p>【注意事項】</p>
+              <ul>
+                <li>
+                  アレルギー等でお召し上がりになれない食材がございましたら事前にお伝えください。
+                </li>
+                <li>お申し込み内容の変更は、お早めにご相談ください。</li>
+                <li>
+                  ※ご希望に添えない場合もございます。あらかじめご容赦ください。
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- お申し込みの流れ -->
+    <section class="flow-section">
+      <div class="container">
+        <h2 class="section-title">お申し込みの流れ</h2>
+        <div class="flow-steps">
+          <div class="step-card">
+            <div class="step-number">Step 1</div>
+            <div class="step-desc">仮予約フォーム送信（5分で完了）</div>
+          </div>
+          <div class="step-card">
+            <div class="step-number">Step 2</div>
+            <div class="step-desc">担当者より内容すり合わせ</div>
+          </div>
+          <div class="step-card">
+            <div class="step-number">Step 3</div>
+            <div class="step-desc">プラン・日程の最終確定</div>
+          </div>
+          <div class="step-card">
+            <div class="step-number">Step 4</div>
+            <div class="step-desc">当日実施・サポート</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+      <div class="container">
+        <h2 class="section-title">よくある質問</h2>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>雨天時でも実施できますか？</span>
+            <span class="icon">＋</span>
+          </div>
+          <div class="faq-answer">
+            屋内施設がありますので、雨天時でも問題なく実施可能です。
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>バス駐車場はありますか？</span>
+            <span class="icon">＋</span>
+          </div>
+          <div class="faq-answer">
+            敷地内にバス専用駐車スペース（2台分）を完備しております。事前予約をお願いします。
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>出張対応エリアはどこまでですか？</span>
+            <span class="icon">＋</span>
+          </div>
+          <div class="faq-answer">
+            東京都内および近郊エリア（要相談）での出張対応が可能です。詳細はお問い合わせください。
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>プラネタリウム設置に暗室は必要ですか？</span>
+            <span class="icon">＋</span>
+          </div>
+          <div class="faq-answer">
+            仮設ドーム内は暗転可能ですので、体育館や大教室でも実施可能です。
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- お問い合わせCTA -->
+    <section class="contact-cta">
+      <div class="container text-center mb-40">
+        <a href="/contact/" class="apply-btn">団体利用のお問い合わせはこちら</a>
+      </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-col">
+          <h4>会社概要</h4>
+          <ul>
+            <li><a href="/company/philosophy/">企業理念</a></li>
+            <li><a href="/company/access/">アクセス</a></li>
+            <li><a href="/company/contact/">お問い合わせ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>サービス</h4>
+          <ul>
+            <li><a href="/service/school/">校外学習</a></li>
+            <li><a href="/service/group/">団体利用</a></li>
+            <li><a href="/service/individual/">個人利用</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>サポート</h4>
+          <ul>
+            <li><a href="/faq/">よくある質問</a></li>
+            <li><a href="/privacy/">プライバシーポリシー</a></li>
+            <li><a href="/terms/">利用規約</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>SNS</h4>
+          <ul>
+            <li>
+              <a href="https://www.facebook.com/imaginus" target="_blank"
+                >Facebook</a
+              >
+            </li>
+            <li>
+              <a href="https://www.instagram.com/imaginus" target="_blank"
+                >Instagram</a
+              >
+            </li>
+            <li>
+              <a href="https://twitter.com/imaginus" target="_blank">Twitter</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        〒166-0001 東京都杉並区高円寺北2-14-13 | © IMAGINUS All Rights Reserved
+      </div>
+    </footer>
+
+    <!-- JavaScript: アコーディオン, タブ, カルーセル -->
+    <script>
+      // FAQアコーディオン
+      document.querySelectorAll(".faq-question").forEach((q) => {
+        q.addEventListener("click", () => {
+          const answer = q.nextElementSibling;
+          const icon = q.querySelector(".icon");
+          if (answer.style.display === "block") {
+            answer.style.display = "none";
+            icon.textContent = "+";
+          } else {
+            answer.style.display = "block";
+            icon.textContent = "−";
+          }
+        });
+      });
+
+      // ワークショップタブ切替
+      const tabButtons = document.querySelectorAll(".ws-tabs button");
+      tabButtons.forEach((tb) => {
+        tb.addEventListener("click", () => {
+          tabButtons.forEach((b) => b.classList.remove("active"));
+          tb.classList.add("active");
+          const targetId = "ws-" + tb.getAttribute("data-tab");
+          document.querySelectorAll(".ws-carousel").forEach((c) => {
+            c.style.display = c.id === targetId ? "block" : "none";
+          });
+        });
+      });
+
+      // カルーセル左右矢印
+      document.querySelectorAll(".ws-carousel").forEach((carousel) => {
+        const container = carousel.querySelector(".ws-cards");
+        const leftArrow = carousel.querySelector(".ws-arrow.left");
+        const rightArrow = carousel.querySelector(".ws-arrow.right");
+        const scrollAmt = 280; // カード幅 + ギャップ相当
+
+        leftArrow.addEventListener("click", () => {
+          container.scrollBy({ left: -scrollAmt, behavior: "smooth" });
+        });
+        rightArrow.addEventListener("click", () => {
+          container.scrollBy({ left: scrollAmt, behavior: "smooth" });
+        });
+      });
+    </script>
+  </body>
+</html>
+
+
